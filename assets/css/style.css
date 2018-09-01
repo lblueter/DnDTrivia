@@ -17,6 +17,7 @@ body {
     background-color: rgba(255, 0, 0, .50);
     color: white;
     margin-top: 30px;
+    padding-bottom: 20px;
 }
 #answerA:hover, #answerB:hover, #answerC:hover, #answerD:hover {
     background-color: yellow;

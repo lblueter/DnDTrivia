@@ -7,6 +7,7 @@ var questionOne = {
     trapOne: "1997",
     trapTwo: "1984",
     trapThree: "1970",
+    img: "assets/images/olddnd.jpg"
 }
 var questionTwo = {
     content: "What is the name of the creator of Dungeons & Dragons?",
@@ -14,6 +15,7 @@ var questionTwo = {
     trapOne: "Matthew Mercer",
     trapTwo: "Wizards of the Coast",
     trapThree: "Tactical Studies Rules",
+    img: "assets/images/Gary-Gygax.jpg"
 }
 var questionThree = {
     content: "Which edition of Dungeons & Dragons first used THAC0?",
@@ -21,6 +23,7 @@ var questionThree = {
     trapOne: "Dungeons & Dragons 3.5",
     trapTwo: "Dungeons & Dragons 5e",
     trapThree: "Original Dungeons & Dragons",
+    img: "assets/images/thac0.jpg"
 }
 var questionFour = {
     content: "What is the name of the game that rivaled D&D 4th edition?",
@@ -28,6 +31,7 @@ var questionFour = {
     trapOne: "Better Dungeons & Dragons",
     trapTwo: "Mutants & Masterminds",
     trapThree: "Shadowrun",
+    img: "assets/images/pathfinder.png"
 }
 var questionFive = {
     content: "What is the name of the most legendary monster in Dungeons & Dragons?",
@@ -35,6 +39,7 @@ var questionFive = {
     trapOne: "Beholder",
     trapTwo: "Lich",
     trapThree: "Mind Flayer",
+    img: "assets/images/Tarrasque.jpg"
 }
 var questionsAnswered = 0;
 var answeredCorrect = 0;
@@ -115,12 +120,15 @@ var nextQuestion = function () {
         $("#displayDiv").show()
     }
 }
-var correctAnswer = function () {
+var correctAnswer = function (q) {
     questionsAnswered++
     answeredCorrect++
     $(".question").text("Correct!")
     clearInterval(intervalID)
     $("#answerDiv").hide()
+    $("#displayDiv").show()
+    $("#rightWrong").text("")
+    $("#pic").attr("src", q.img)
     setTimeout(nextQuestion, 3000)
 }
 var wrongAnswer = function (of) {
@@ -137,6 +145,7 @@ var wrongAnswer = function (of) {
     $("#answerDiv").hide()
     $("#displayDiv").show()
     $("#rightWrong").text("The Correct Answer was: " + of.answer)
+    $("#pic").attr("src", of.img)
     setTimeout(nextQuestion, 3000)
 }
 $("#start").on("click", function () {
@@ -162,7 +171,7 @@ $("#answerA").on("click", function () {
         return wrongAnswer(questionThree)
     }
     else if (questionsAnswered === 3) {
-        return correctAnswer()
+        return correctAnswer(questionFour)
     }
     else if (questionsAnswered === 4) {
         return wrongAnswer(questionFive)
@@ -170,7 +179,7 @@ $("#answerA").on("click", function () {
 })
 $("#answerB").on("click", function () {
     if (questionsAnswered === 0) {
-        return correctAnswer()
+        return correctAnswer(questionOne)
     }
     else if (questionsAnswered === 1) {
         return wrongAnswer(questionTwo)
@@ -193,13 +202,13 @@ $("#answerC").on("click", function () {
         return wrongAnswer(questionTwo)
     }
     else if (questionsAnswered === 2) {
-        return correctAnswer()
+        return correctAnswer(questionThree)
     }
     else if (questionsAnswered === 3) {
         return wrongAnswer(questionFour)
     }
     else if (questionsAnswered === 4) {
-        return correctAnswer()
+        return correctAnswer(questionFive)
     }
 })
 $("#answerD").on("click", function () {
@@ -207,7 +216,7 @@ $("#answerD").on("click", function () {
         return wrongAnswer(questionOne)
     }
     else if (questionsAnswered === 1) {
-        return correctAnswer()
+        return correctAnswer(questionTwo)
     }
     else if (questionsAnswered === 2) {
         return wrongAnswer(questionThree)
