@@ -1,5 +1,5 @@
 var theMostImportantVariable = true;
-var moveLeftPlease = alert(theMostImportantVariable)
+// var moveLeftPlease = alert(theMostImportantVariable)
 
 var questionOne = {
     content: "What year was Dungeons & Dragons created?",
@@ -39,6 +39,7 @@ var questionFive = {
 var questionsAnswered = 0;
 var answeredCorrect = 0;
 var answeredWrong = 0;
+var didntAnswer = 0;
 var time = 30;
 var intervalID
 var count = function () {
@@ -68,7 +69,14 @@ var nextQuestion = function () {
     $("#displayDiv").hide()
     time = 30
     intervalID = setInterval(count, 1000)
-    if (questionsAnswered === 1) {
+    if (questionsAnswered === 0) {
+        $(".question").text(questionOne.content)
+        $("#answerA").text(questionOne.trapOne)
+        $("#answerB").text(questionOne.answer)
+        $("#answerC").text(questionOne.trapTwo)
+        $("#answerD").text(questionOne.trapThree)
+    }
+    else if (questionsAnswered === 1) {
         $(".question").text(questionTwo.content)
         $("#answerA").text(questionTwo.trapTwo)
         $("#answerB").text(questionTwo.trapThree)
@@ -96,9 +104,20 @@ var nextQuestion = function () {
         $("#answerC").text(questionFive.answer)
         $("#answerD").text(questionFive.trapThree)
     }
+    else if (questionsAnswered === 5) {
+        $(".question").text("You Defeated! You got:")
+        $("#rightWrong").text(answeredCorrect + " Answers Right!")
+        $("#justWrong").text(answeredWrong + " Answers Wrong!")
+        $("#what").text(didntAnswer + " Unanswered.")
+        $("#start").text("Start Over?").show();
+        clearInterval(intervalID)
+        $("#answerDiv").hide()
+        $("#displayDiv").show()
+    }
 }
 var correctAnswer = function () {
     questionsAnswered++
+    answeredCorrect++
     $(".question").text("Correct!")
     clearInterval(intervalID)
     $("#answerDiv").hide()
@@ -108,9 +127,11 @@ var wrongAnswer = function (of) {
     questionsAnswered++
     if (time <= 0) {
         $(".question").text("Time's Up!")
+        didntAnswer++
     }
     else {
         $(".question").text("Wrong!")
+        answeredWrong++
     }
     clearInterval(intervalID)
     $("#answerDiv").hide()
@@ -119,18 +140,19 @@ var wrongAnswer = function (of) {
     setTimeout(nextQuestion, 3000)
 }
 $("#start").on("click", function () {
-    $(".question").text(questionOne.content)
-    $("#answerA").text(questionOne.trapOne)
-    $("#answerB").text(questionOne.answer)
-    $("#answerC").text(questionOne.trapTwo)
-    $("#answerD").text(questionOne.trapThree)
+    questionsAnswered = 0
+    answeredCorrect = 0
+    answeredWrong = 0
+    didntAnswer = 0
+    $("#justWrong").text("")
+    $("#what").text("")
     $(".time").text("Time Remaining: " + time)
     $("#start").hide()
-    intervalID = setInterval(count, 1000)
+    nextQuestion()
+    
 })
 $("#answerA").on("click", function () {
     if (questionsAnswered === 0) {
-        console.log("works")
         return wrongAnswer(questionOne)
     }
     else if (questionsAnswered === 1) {
