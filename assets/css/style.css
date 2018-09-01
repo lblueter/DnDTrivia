@@ -4,8 +4,38 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    font-size: 24px;
 }
 .container {
-    background-color: rgba(255, 0, 0, .5);
+    background-color: rgba(255, 0, 0, .75);
     color: white;
+    margin-top: 20px;
+}
+.answerA:hover, .answerB:hover, .answerC:hover, .answerD:hover {
+    background-color: yellow;
+    color: black;
+}
+.answerA:active, .answerB:active, .answerC:active, .answerD:active {
+    background-color: black;
+    color: white;
+}
+h1 {
+    font-family: cursive;
+    font-size: 80px;
+    color: rgb(0, 204, 255);
+    font-weight: bold;
+    margin: 20px;
+}
+h3 {
+    margin: 20px;
+    font-weight: normal;
+    font-size: 48px;
+    color: white;
+}
+#start {
+    padding: 10px 20px 10px 20px;
+    width: 50%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
 }
