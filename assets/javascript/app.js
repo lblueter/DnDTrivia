@@ -118,6 +118,7 @@ var nextQuestion = function () {
         clearInterval(intervalID)
         $("#answerDiv").hide()
         $("#displayDiv").show()
+        $("#pic").hide()
     }
 }
 var correctAnswer = function (q) {
@@ -128,6 +129,7 @@ var correctAnswer = function (q) {
     $("#answerDiv").hide()
     $("#displayDiv").show()
     $("#rightWrong").text("")
+    $("#pic").show()
     $("#pic").attr("src", q.img)
     setTimeout(nextQuestion, 3000)
 }
@@ -145,6 +147,7 @@ var wrongAnswer = function (of) {
     $("#answerDiv").hide()
     $("#displayDiv").show()
     $("#rightWrong").text("The Correct Answer was: " + of.answer)
+    $("#pic").show()
     $("#pic").attr("src", of.img)
     setTimeout(nextQuestion, 3000)
 }
