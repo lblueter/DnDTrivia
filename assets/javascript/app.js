@@ -127,10 +127,10 @@ var correctAnswer = function (q) {
     $(".question").text("Correct!")
     clearInterval(intervalID)
     $("#answerDiv").hide()
-    $("#displayDiv").show()
     $("#rightWrong").text("")
-    $("#pic").show()
     $("#pic").attr("src", q.img)
+    $("#pic").show()
+    $("#displayDiv").show()
     setTimeout(nextQuestion, 3000)
 }
 var wrongAnswer = function (of) {
@@ -145,10 +145,10 @@ var wrongAnswer = function (of) {
     }
     clearInterval(intervalID)
     $("#answerDiv").hide()
-    $("#displayDiv").show()
     $("#rightWrong").text("The Correct Answer was: " + of.answer)
-    $("#pic").show()
     $("#pic").attr("src", of.img)
+    $("#pic").show()
+    $("#displayDiv").show()
     setTimeout(nextQuestion, 3000)
 }
 $("#start").on("click", function () {
