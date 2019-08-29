@@ -1,4 +1,4 @@
-# TriviaGame
+# D&DTrivia
 Welcome to Dungeons & Dragons Trivia!
 
 This program is made with HTML, CSS, Javascript, JQuery, and Bootstrap.
@@ -18,4 +18,4 @@ When the game is over it will tell you how many you got correct, how many wrong,
 
 Enjoy!
 
-Link to site:  https://lblueter.github.io/TriviaGame/
+Link to site:  https://lblueter.github.io/DnDTrivia/
