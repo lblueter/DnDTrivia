@@ -72,6 +72,7 @@ var count = function () {
 var nextQuestion = function () {
     $("#answerDiv").show()
     $("#displayDiv").hide()
+    $("#pic").attr("src", "")
     time = 30
     intervalID = setInterval(count, 1000)
     if (questionsAnswered === 0) {
